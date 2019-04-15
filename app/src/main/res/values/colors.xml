@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#EF3E42</color>
+    <color name="colorPrimaryDark">#00574B</color>
+    <color name="colorAccent">#D81B60</color>
+    <color name="white_gray">#E1E0DF</color>
+    <color name="medium_gray">#F4F4F4</color>
+    <color name="dark_gray">#707070</color>
+    <color name="dark_slate_gray">#637182</color>
+    <color name="dark_text_gray">#6E7886</color>
+    <color name="text_dialogs">#637182</color>
+    <color name="background_item_pdv_header">#8E7498</color>
+    <color name="gray_line">#B2B2B2</color>
+    <color name="white">#FFFFFF</color>
+    <color name="black">#000</color>
+    <color name="green">#47B52C</color>
+    <color name="border_color">#E2E2E2</color>
+    <color name="gray_text_item_exhibitions">#6A7583</color>
+    <color name="background_gray_dark">#E2E2E2</color>
+    <color name="color_header">#1A97999B</color>
+    <color name="color_background_card">#F8F8F8</color>
+    <color name="almost_white">#F8F8F8</color>
+    <color name="almost_white2">#F4F4F4</color>
+    <color name="background_green">#4BBD5A</color>
+    <color name="background_gray_medium">#FAFAFA</color>
+    <color name="texColorSpinner">#7C8692</color>
+    <color name="light_gray">#F2F2F2</color>
+    <color name="border_color_gray">#EBEBEB</color>
+
+    <!-- Charts Theme -->
+    <color name="green_1">#84BD00</color>
+    <color name="green_2">#679300</color>
+    <color name="green_3">#567B00</color>
+    <color name="cyan_1">#21BEAD</color>
+    <color name="cyan_2">#32D3C1</color>
+    <color name="cyan_3">#1B9386</color>
+    <color name="blue_1">#1898BB</color>
+    <color name="blue_2">#34B2D5</color>
+    <color name="blue_3">#0F7E9D</color>
+    <color name="red_1">#F0655B</color>
+    <color name="red_2">#F48B83</color>
+    <color name="red_3">#CC5148</color>
+    <color name="pink_1">#EB8884</color>
+    <color name="pink_2">#D37572</color>
+    <color name="pink_3">#C45D59</color>
+    <color name="tomato_1">#F0655B</color>
+    <color name="tomato_2">#F48B83</color>
+    <color name="tomato_3">#CC5148</color>
+    <color name="orange_1">#F07927</color>
+    <color name="orange_2">#F58D45</color>
+    <color name="orange_3">#C6631E</color>
+    <color name="purple_1">#A55387</color>
+    <color name="purple_2">#BE679E</color>
+    <color name="purple_3">#843C6A</color>
+    <color name="gold_1">#CFA556</color>
+    <color name="gold_2">#AC8946</color>
+
+    <!--Nav_color-->
+    <color name="nav_color">#F0595D</color>
+    <color name="nav_color_semiDark">#EF3E42</color>
+    <color name="nav_color_dark">#D42E32</color>
+    <color name="gray_nav">#ADADAD</color>
+    <color name="gray_intermedy_nav">#D1D1D1</color>
+    <color name="gray_icon_item_nav">#707070</color>
+
+
+    <!-- toolbar color-->
+    <color name="jhonson_color_gray">#F0EFED</color>
+    <color name="borderGray">#E2E2E2</color>
+
+    <!-- Report state colors -->
+    <color name="sendColor">#5BC497</color>
+    <color name="tosendColor">#EFA71E</color>
+    <color name="nosendColor">#C73339</color>
+    <!-- Schedule state colors -->
+    <color name="visiting">#3E9BCC</color>
+    <color name="notvisited">#C6C6C6</color>
+    <!--<color name="sendColor">#5BC396</color>-->
+    <!--<color name="tosendColor">#EEA61E</color>-->
+    <!--<color name="nosendColor">#C63339</color>-->
+
+    <!--ColorsDetailsVisitsEXAMPLE-->
+    <color name="blueLow">#84BFCC</color>
+    <color name="blueDark">#5D98A5</color>
+
+    <color name="greenLow">#51C4CB</color>
+    <color name="greenDark">#37A5AB</color>
+
+    <color name="purpleLow">#8B5F9B</color>
+    <color name="purpleDark">#5A3866</color>
+
+
+    <color name="green_item_agend">#5BC497</color>
+    <color name="green_text_item_agend">#288958</color>
+    <color name="red_text_item_agend">#EF3E42</color>
+    <color name="line_rvSchedule_gray">#E8E9EB</color>
+</resources>

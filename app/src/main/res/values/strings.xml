@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TTluis</string>
+    <string name="error_field_required">ESTE CAMPO ES REQUERIDO</string>
+
+    <string name="dialog_title">Title</string>
+    <string name="dialog_close">CERRAR</string>
+    <string name="dialog_accept">ACEPTAR</string>
+    <string name="dialog_yes">SI</string>
+
+    <string name="network_error">ERROR DE RED, VERIFIQUE SU CONEXIÓN O INTENTELO MÁS TARDE</string>
+    <string name="label_error">ERROR DE RED</string>
+    <string name="dialog_empty"></string>
+    <string name="label_login_result">Resultado Login</string>
+
+    <string name="label_user">USUARIO</string>
+    <string name="label_password">CONTRASEÑA</string>
+    <string name="label_button_enter">INICIAR SESIÓN</string>
+</resources>
