@@ -8,7 +8,9 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.ViewModelProviders
+import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import gshp.net.johnson.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.main_fragment.*
@@ -47,6 +49,20 @@ class MainFragment : BaseFragment(),MainContract.View {
             layoutManager = LinearLayoutManager(context)
         }
 
+        bottom_navigation.setOnNavigationItemSelectedListener {
+            when(it.itemId){
+                R.id.close_session -> {
+//                    showToastMsj("Cerrar")
+                    FirebaseAuth.getInstance().signOut()
+                    findNavController(this).popBackStack()
+                    true
+                }
+                else -> {
+                    showToastMsj("Else")
+                    true
+                }
+            }
+        }
         viewModel.getOrderByUid(arguments!!.getString("uid"))
     }
 
