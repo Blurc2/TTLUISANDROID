@@ -27,4 +27,8 @@ object Constants {
         const val DIALOG_ERROR_LANGUAJE = "DIALOG_ERROR_LANGUAJE"
 
     }
+
+    object firebase{
+        const val PATH_USER = "users/%s"
+    }
 }

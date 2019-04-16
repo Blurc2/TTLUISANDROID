@@ -4,9 +4,11 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.os.bundleOf
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
+import com.google.firebase.auth.FirebaseAuth
 import gshp.net.johnson.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.login_fragment.*
 import peach.princess.my.net.ttluis.R
@@ -16,9 +18,10 @@ import peach.princess.my.net.ttluis.Utils.ProgressDialog
 import peach.princess.my.net.ttluis.Utils.Validation
 import peach.princess.my.net.ttluis.data.executor.AppScheduleProviderK
 import peach.princess.my.net.ttluis.domain.Interactor.LoginInteractorImpl
+import peach.princess.my.net.ttluis.ui.main.MainFragment
 
 class LoginFragment : BaseFragment(),LoginContract.View {
-    private val scheduleProvider = AppScheduleProviderK()
+
 
     override val layoutId: Int
         get() = R.layout.login_fragment
@@ -29,7 +32,7 @@ class LoginFragment : BaseFragment(),LoginContract.View {
     }
 
     private val viewModel by lazy {
-        LoginViewModel(scheduleProvider,LoginInteractorImpl(),this)
+        LoginViewModel(activity.scheduleProvider,LoginInteractorImpl(),this)
     }
 
 
@@ -45,6 +48,15 @@ class LoginFragment : BaseFragment(),LoginContract.View {
 
         btnLogin.setOnClickListener{
             verifyNetwork()
+        }
+    }
+
+    override fun onStart() {
+        super.onStart()
+        FirebaseAuth.getInstance().currentUser?.let {
+            showToastMsj(it.uid)
+            var bundle = bundleOf("uid" to it.uid)
+            findNavController(this).navigate(R.id.action_loginFragment_to_mainFragment,bundle)
         }
     }
 
@@ -83,8 +95,8 @@ class LoginFragment : BaseFragment(),LoginContract.View {
         }
     }
 
-    override fun loginresult(msg: String) {
-        if(msg.isNotEmpty())
+    override fun loginresult(flag: Boolean,msg: String) {
+        if(!flag)
         activity.showCustomDialog(R.string.label_login_result,
             msg,
             getString(R.string.dialog_empty),
@@ -95,7 +107,10 @@ class LoginFragment : BaseFragment(),LoginContract.View {
             R.layout.dialog_generic
         )
         else
-            findNavController(this).navigate(R.id.action_loginFragment_to_mainFragment)
+        {
+            var bundle = bundleOf("uid" to msg)
+            findNavController(this).navigate(R.id.action_loginFragment_to_mainFragment,bundle)
+        }
     }
 
     override fun showLoading() = ProgressDialog.show(activity)

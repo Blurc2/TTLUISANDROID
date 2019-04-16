@@ -13,6 +13,7 @@
                 app:popUpToInclusive="true"
                 android:id="@+id/action_loginFragment_to_mainFragment"
                 app:destination="@id/mainFragment"/>
+        <argument android:name="uid" app:argType="string" android:defaultValue='""'/>
     </fragment>
 
     <fragment android:id="@+id/mainFragment" android:name="peach.princess.my.net.ttluis.ui.main.MainFragment"

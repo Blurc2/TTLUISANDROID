@@ -2,7 +2,7 @@ package peach.princess.my.net.ttluis.ui.login
 
 interface LoginContract {
     interface View {
-        fun loginresult(msg: String)
+        fun loginresult(flag: Boolean,msg: String)
         fun showLoading()
         fun hideLoading()
     }

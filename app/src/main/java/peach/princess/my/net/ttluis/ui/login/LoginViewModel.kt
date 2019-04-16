@@ -20,13 +20,13 @@ class LoginViewModel(provider: ScheduleProvider, interactor: LoginInteractor, vi
                 ?.subscribeOn(scheduleProvider?.io())
                 ?.observeOn(scheduleProvider?.ui())
             !!.subscribe({
-                Log.i("Rxfirebase2", "User logged $it")
+                Log.i("Rxfirebase2", "User logged ${it.uid}")
                 navigator?.hideLoading()
-                navigator?.loginresult("")
+                navigator?.loginresult(true,it.uid)
             }, {
                 navigator?.hideLoading()
                 it.message?.let {
-                    navigator?.loginresult(it)
+                    navigator?.loginresult(false,it)
                     Log.e("ERROR_DE:LOGIN", it)
                 }
 
