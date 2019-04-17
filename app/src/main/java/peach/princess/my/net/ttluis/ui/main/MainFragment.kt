@@ -5,22 +5,20 @@ import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.fragment.app.Fragment
-import androidx.lifecycle.ViewModelProvider
-import androidx.lifecycle.ViewModelProviders
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
 import com.google.gson.Gson
 import gshp.net.johnson.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.main_fragment.*
+import kotlinx.android.synthetic.main.order_info.*
 import peach.princess.my.net.ttluis.R
 import peach.princess.my.net.ttluis.Utils.ProgressDialog
+import peach.princess.my.net.ttluis.Utils.initRow
 import peach.princess.my.net.ttluis.domain.Interactor.MainInteractorImpl
 import peach.princess.my.net.ttluis.domain.entity.Orden
 import peach.princess.my.net.ttluis.domain.entity.User
 import peach.princess.my.net.ttluis.ui.main.adapter.OrderAdapter
-import java.lang.Exception
 
 class MainFragment : BaseFragment(),MainContract.View {
 
@@ -44,9 +42,12 @@ class MainFragment : BaseFragment(),MainContract.View {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
+
         rvOrders.apply {
-            adapter = OrderAdapter(ArrayList(),context)
-            layoutManager = LinearLayoutManager(context)
+            initRow(spacingItem = 10)
+            adapter = OrderAdapter(ArrayList(),context){
+                findNavController(this@MainFragment).navigate(R.id.action_mainFragment_to_orderFragment)
+            }
         }
 
         bottom_navigation.setOnNavigationItemSelectedListener {
@@ -67,12 +68,8 @@ class MainFragment : BaseFragment(),MainContract.View {
     }
 
     override fun loadData(user: User) {
-
-        var orders = ArrayList<Orden>()
-        orders.addAll(user.ordenes)
-        orders.removeAt(0)
-//        Log.i("MAINFRAGMENT", Gson().toJson(orders))
-        (rvOrders.adapter as OrderAdapter).setData(orders)
+        Log.i("MAINFRAGMENT", Gson().toJson(user.ordeneslist))
+        (rvOrders.adapter as OrderAdapter).setData(user.ordeneslist)
     }
 
     override fun showLoading() = ProgressDialog.show(activity)

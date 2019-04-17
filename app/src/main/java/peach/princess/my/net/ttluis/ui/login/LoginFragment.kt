@@ -46,7 +46,7 @@ class LoginFragment : BaseFragment(),LoginContract.View {
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
 
-        btnLogin.setOnClickListener{
+        btn_login.setOnClickListener{
             verifyNetwork()
         }
     }
@@ -81,14 +81,14 @@ class LoginFragment : BaseFragment(),LoginContract.View {
         val pwdError = Validation.getEmptyError(password)
 
         if ((userError > 0) && (pwdError > 0)) {
-            passLayout.isPasswordVisibilityToggleEnabled = false
+            txt_input1.isPasswordVisibilityToggleEnabled = false
             ETCorreo.error = getString(R.string.error_field_required)
             ETPass.error = getString(R.string.error_field_required)
         } else if (userError > 0) {
-            passLayout.isPasswordVisibilityToggleEnabled = false
+            txt_input1.isPasswordVisibilityToggleEnabled = false
             ETCorreo.error = getString(R.string.error_field_required)
         } else if (pwdError > 0) {
-            passLayout.isPasswordVisibilityToggleEnabled = false
+            txt_input1.isPasswordVisibilityToggleEnabled = false
             ETPass.error = getString(R.string.error_field_required)
         } else {
             viewModel.login(user, password)

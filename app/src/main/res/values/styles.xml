@@ -1,7 +1,7 @@
-<resources>
+<resources xmlns:tools="http://schemas.android.com/tools">
 
     <!-- Base application theme. -->
-    <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
+    <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
@@ -51,5 +51,26 @@
         <item name="android:gravity">center</item>
         <item name="android:textAllCaps">true</item>
         <item name="android:textSize">@dimen/text_12</item>
+    </style>
+
+    <style name="ThemeOverlay.MaterialComponents.Toolbar.Primary" parent="">
+        <item name="colorControlNormal">@color/white</item>
+        <item name="actionMenuTextColor">@color/white</item>
+    </style>
+
+    <style name="Widget.MaterialComponents.Toolbar.Primary">
+        <item name="android:elevation" tools:ignore="NewApi">@dimen/design_appbar_elevation</item>
+        <item name="android:background">@color/colorPrimary</item>
+        <item name="titleTextColor">@color/white</item>
+        <item name="subtitleTextColor">@color/colorPrimary</item>
+        <!-- Note: this theme overlay will only work if the style is applied directly to a Toolbar. -->
+        <item name="android:theme">@style/ThemeOverlay.MaterialComponents.Toolbar.Primary</item>
+    </style>
+
+    <style name="Widget.Catalog.Toolbar" parent="Widget.MaterialComponents.Toolbar.Primary"/>
+
+    <style name="Widget.Catalog.Toolbar.WithCloseButton" parent="Widget.Catalog.Toolbar">
+        <item name="navigationContentDescription">Close demo</item>
+        <item name="navigationIcon">@drawable/ic_close_vd_theme_24px</item>
     </style>
 </resources>

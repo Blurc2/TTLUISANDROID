@@ -8,6 +8,7 @@ import com.google.firebase.database.ValueEventListener
 import gshp.net.johnson.ui.base.BaseViewModel
 import peach.princess.my.net.ttluis.domain.Interactor.MainInteractor
 import peach.princess.my.net.ttluis.domain.Repository.ScheduleProvider
+import peach.princess.my.net.ttluis.domain.entity.Orden
 import peach.princess.my.net.ttluis.domain.entity.User
 
 
@@ -32,7 +33,23 @@ class MainViewModel(provider: ScheduleProvider, interactor: MainInteractor, view
 
                     override fun onDataChange(p0: DataSnapshot) {
                         p0?.let {
-                            navigator?.loadData(p0.getValue(User::class.java) as User)
+                            var user = p0.getValue(User::class.java)
+                            var listorder = ArrayList<Orden>()
+                            for(order in p0.child("ordenes").children)
+                            {
+                                var listdesc = ArrayList<String>()
+                                var orden = order.getValue(Orden::class.java) as Orden
+                                for(desc in order.child("descripciones").children)
+                                    listdesc.add(desc.getValue(String::class.java) as String)
+                                orden.descripcioneslist.addAll(listdesc)
+                                listorder.add(orden)
+                            }
+
+                            user?.let {
+                                it.ordeneslist.addAll(listorder)
+                                navigator?.loadData( it)
+                            }
+
                         }
                     }
 

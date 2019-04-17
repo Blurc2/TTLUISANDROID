@@ -10,7 +10,6 @@
             app:cardCornerRadius="@dimen/dimen_5"
             app:strokeColor="@color/white_gray"
             app:strokeWidth="@dimen/dimen_1"
-            android:layout_marginBottom="@dimen/dimen_10"
             android:layout_marginLeft="@dimen/mtrl_card_spacing"
             android:layout_marginTop="@dimen/mtrl_card_spacing"
             android:layout_marginRight="@dimen/mtrl_card_spacing"

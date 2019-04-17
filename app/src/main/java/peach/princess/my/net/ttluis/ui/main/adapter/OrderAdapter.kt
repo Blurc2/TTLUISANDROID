@@ -6,13 +6,15 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.TextView
+import android.widget.Toast
 import androidx.recyclerview.widget.RecyclerView
 import com.google.gson.Gson
 import peach.princess.my.net.ttluis.R
+import peach.princess.my.net.ttluis.Utils.inflate
 import peach.princess.my.net.ttluis.domain.entity.Orden
 
 
-class OrderAdapter(val items : ArrayList<Orden>, val context: Context) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
+class OrderAdapter(val items : ArrayList<Orden>, val context: Context, val listener: (Orden)-> Unit) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
 
     fun setData(list : ArrayList<Orden>)
@@ -28,7 +30,7 @@ class OrderAdapter(val items : ArrayList<Orden>, val context: Context) : Recycle
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
 
-        return ViewHolder(LayoutInflater.from(context).inflate(R.layout.item_order, parent, false))
+        return ViewHolder(parent.inflate(R.layout.item_order))
     }
 
     override fun onBindViewHolder(holder: ViewHolder, position: Int) {
@@ -57,6 +59,12 @@ class OrderAdapter(val items : ArrayList<Orden>, val context: Context) : Recycle
         val tvend : TextView = view.findViewById(R.id.end)
         val tvubicacion : TextView = view.findViewById(R.id.ubicacion)
         val tvestado : TextView = view.findViewById(R.id.estado)
+
+        init {
+            view.setOnClickListener {
+                listener(items[adapterPosition])
+            }
+        }
     }
 }
 

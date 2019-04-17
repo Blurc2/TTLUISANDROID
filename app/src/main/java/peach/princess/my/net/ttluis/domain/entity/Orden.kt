@@ -2,7 +2,7 @@ package peach.princess.my.net.ttluis.domain.entity
 
 data class Orden (
     var depto : Depto = Depto(),
-    var descripciones : ArrayList<String> = ArrayList(),
+    var descripcioneslist : ArrayList<String> = ArrayList(),
     var end : String = "",
     var equipo : String = "",
     var estado : Int = -1,

@@ -9,7 +9,7 @@ data class User (
     var idEmpleado : Int = -1,
     var nombre : String = "",
     var numero : Long = -1,
-    var ordenes : ArrayList<Orden> = ArrayList(),
+    var ordeneslist : ArrayList<Orden> = ArrayList(),
     var password : String = "",
     var subdepartamento : String = "",
     var tipo : String = "",
