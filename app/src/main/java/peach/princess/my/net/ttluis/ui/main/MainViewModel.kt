@@ -66,4 +66,6 @@ class MainViewModel(provider: ScheduleProvider, interactor: MainInteractor, view
         )
     }
 
+
+
 }

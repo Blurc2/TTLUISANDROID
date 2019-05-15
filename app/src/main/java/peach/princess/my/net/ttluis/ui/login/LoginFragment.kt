@@ -51,8 +51,7 @@ class LoginFragment : BaseFragment(),LoginContract.View {
         }
 
         registrar.setOnClickListener {
-            activity.url = "https://developer.android.com/guide/webapps/webview"
-            findNavController(this).navigate(R.id.action_loginFragment_to_webview2)
+            findNavController(this).navigate(R.id.action_loginFragment_to_webview2, bundleOf("action" to 1))
         }
     }
 
@@ -119,6 +118,9 @@ class LoginFragment : BaseFragment(),LoginContract.View {
             var bundle = bundleOf("uid" to msg)
             findNavController(this).navigate(R.id.action_loginFragment_to_mainFragment,bundle)
         }
+    }
+
+    override fun setUrlF(string: String) {
     }
 
     override fun showLoading() = ProgressDialog.show(activity)

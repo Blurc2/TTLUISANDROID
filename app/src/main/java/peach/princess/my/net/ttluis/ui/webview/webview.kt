@@ -7,10 +7,14 @@ import android.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.webkit.WebResourceRequest
+import android.webkit.WebView
+import android.webkit.WebViewClient
 import gshp.net.johnson.ui.base.BaseFragment
 import kotlinx.android.synthetic.main.fragment_webview.*
 
 import peach.princess.my.net.ttluis.R
+import peach.princess.my.net.ttluis.Utils.ProgressDialog
 
 
 /**
@@ -36,7 +40,32 @@ class webview : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        webview.loadUrl(activity.url)
+
+
+
         webview.settings.javaScriptEnabled = true
+        webview.settings.javaScriptCanOpenWindowsAutomatically = true
+
+        webview.settings.loadWithOverviewMode = true
+        webview.settings.useWideViewPort = true
+        webview.webViewClient = object : WebViewClient(){
+            override fun onPageFinished(view: WebView?, url: String?) {
+                if(arguments?.getInt("action") == 1)
+                    view?.loadUrl("javascript:showRegisterModal()")
+                hideLoading()
+                super.onPageFinished(view, url)
+            }
+
+            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+                showLoading()
+                return true
+            }
+        }
+
+        webview.loadUrl(activity.url)
     }
+
+    fun showLoading() = ProgressDialog.show(activity)
+
+    fun hideLoading() = ProgressDialog.dismiss()
 }

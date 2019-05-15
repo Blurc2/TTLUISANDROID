@@ -31,6 +31,7 @@ object Constants {
     object firebase{
         const val PATH_USER = "users/%s"
         const val PATH_USERS = "users"
+        const val PATH_URL = "url"
     }
 
     object Routes{

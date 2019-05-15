@@ -76,8 +76,7 @@ class MainFragment : BaseFragment(),MainContract.View {
                 }
 
                 R.id.web -> {
-                    activity.url = "https://developer.android.com/guide/webapps/webview"
-                    findNavController(this).navigate(R.id.action_mainFragment_to_webview2)
+                    findNavController(this).navigate(R.id.action_mainFragment_to_webview2, bundleOf("action" to 2))
 
                     true
                 }
