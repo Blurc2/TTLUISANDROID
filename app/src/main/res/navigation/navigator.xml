@@ -6,27 +6,60 @@
     <fragment android:id="@+id/loginFragment" android:name="peach.princess.my.net.ttluis.ui.login.LoginFragment"
               android:label="login_fragment" tools:layout="@layout/login_fragment">
         <action
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
                 app:launchSingleTop="true"
                 app:popUpTo="@+id/nav_host_fragment"
                 app:popUpToInclusive="true"
                 android:id="@+id/action_loginFragment_to_mainFragment"
                 app:destination="@id/mainFragment"/>
         <argument android:name="uid" app:argType="string" android:defaultValue='""'/>
+        <action android:id="@+id/action_loginFragment_to_webview2" app:destination="@id/webview2"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"/>
     </fragment>
 
     <fragment android:id="@+id/mainFragment" android:name="peach.princess.my.net.ttluis.ui.main.MainFragment"
               android:label="main_fragment" tools:layout="@layout/main_fragment">
-        <action
-                app:enterAnim="@anim/slide_in_right"
-                app:exitAnim="@anim/slide_out_left"
-                app:launchSingleTop="true"
-                app:popUpTo="@+id/nav_host_fragment"
-                app:popUpToInclusive="true"
-                android:id="@+id/action_mainFragment_to_orderFragment" app:destination="@id/orderFragment"/>
+        <action android:id="@+id/action_mainFragment_to_orderInfo" app:destination="@id/orderInfo"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"/>
+        <action android:id="@+id/action_mainFragment_to_webview2" app:destination="@id/webview2"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"/>
     </fragment>
 
-    <fragment android:id="@+id/orderFragment" android:name="peach.princess.my.net.ttluis.ui.order.OrderFragment"
-              android:label="OrderFragment"/>
+    <fragment android:id="@+id/orderInfo" android:name="peach.princess.my.net.ttluis.ui.order_info.OrderInfo"
+              android:label="order_info_fragment" tools:layout="@layout/order_info_fragment">
+        <action android:id="@+id/action_orderInfo_to_mainFragment" app:destination="@id/mainFragment"
+                app:popUpTo="@+id/mainFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
+    <fragment android:id="@+id/webview2" android:name="peach.princess.my.net.ttluis.ui.webview.webview"
+              android:label="fragment_webview" tools:layout="@layout/fragment_webview">
+        <action android:id="@+id/action_webview2_to_loginFragment" app:destination="@id/loginFragment"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/loginFragment"
+                app:popUpToInclusive="true"/>
+        <action android:id="@+id/action_webview2_to_mainFragment" app:destination="@id/mainFragment"
+                app:enterAnim="@anim/fade_in"
+                app:exitAnim="@anim/fade_out"
+                app:popEnterAnim="@anim/fade_in"
+                app:popExitAnim="@anim/fade_out"
+                app:launchSingleTop="true"
+                app:popUpTo="@+id/mainFragment"
+                app:popUpToInclusive="true"/>
+    </fragment>
 </navigation>

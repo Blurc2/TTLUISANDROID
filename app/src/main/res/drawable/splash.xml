@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layer-list xmlns:android="http://schemas.android.com/apk/res/android">
-    <item android:drawable="@color/colorPrimary"/>
+    <item android:drawable="@drawable/fondo3"/>
     <item android:gravity="center"
           android:width="270dp"
-          android:height="130dp"
-          android:drawable="@drawable/udilogo" />
+          android:height="200dp"
+          android:drawable="@drawable/escudoescom" />
 </layer-list>

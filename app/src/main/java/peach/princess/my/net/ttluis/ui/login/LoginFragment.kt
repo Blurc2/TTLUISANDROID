@@ -49,12 +49,17 @@ class LoginFragment : BaseFragment(),LoginContract.View {
         btn_login.setOnClickListener{
             verifyNetwork()
         }
+
+        registrar.setOnClickListener {
+            activity.url = "https://developer.android.com/guide/webapps/webview"
+            findNavController(this).navigate(R.id.action_loginFragment_to_webview2)
+        }
     }
 
     override fun onStart() {
         super.onStart()
         FirebaseAuth.getInstance().currentUser?.let {
-            showToastMsj(it.uid)
+//            showToastMsj(it.uid)
             var bundle = bundleOf("uid" to it.uid)
             findNavController(this).navigate(R.id.action_loginFragment_to_mainFragment,bundle)
         }
@@ -97,15 +102,18 @@ class LoginFragment : BaseFragment(),LoginContract.View {
 
     override fun loginresult(flag: Boolean,msg: String) {
         if(!flag)
-        activity.showCustomDialog(R.string.label_login_result,
-            msg,
-            getString(R.string.dialog_empty),
-            getString(R.string.dialog_accept),
-            DIALOG_NETWORK_AVAILABLE,
-            {}, {},
-            DIALOG_SIMPLE,
-            R.layout.dialog_generic
-        )
+        {
+            activity.showCustomDialog(R.string.label_login_result,
+                "CORREO O CONTRASEÑA INCORRECTOS, FAVOR DE REVISAR LOS DATOS.",
+                getString(R.string.dialog_empty),
+                getString(R.string.dialog_accept),
+                DIALOG_NETWORK_AVAILABLE,
+                {}, {},
+                DIALOG_SIMPLE,
+                R.layout.dialog_generic
+            )
+        }
+
         else
         {
             var bundle = bundleOf("uid" to msg)

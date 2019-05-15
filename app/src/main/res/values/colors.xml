@@ -2,7 +2,7 @@
 <resources>
     <color name="colorPrimary">#EF3E42</color>
     <color name="colorPrimaryDark">#00574B</color>
-    <color name="colorAccent">#D81B60</color>
+    <color name="colorAccent">#D81B37</color>
     <color name="white_gray">#E1E0DF</color>
     <color name="medium_gray">#F4F4F4</color>
     <color name="dark_gray">#707070</color>
@@ -26,6 +26,14 @@
     <color name="texColorSpinner">#7C8692</color>
     <color name="light_gray">#F2F2F2</color>
     <color name="border_color_gray">#EBEBEB</color>
+    <color name="clear_blue">#6da3c7</color>
+
+    <!-- Paleta 1 -->
+    <color name="color1">#562D41</color>
+    <color name="color2">#8065A0</color>
+    <color name="color3">#BACCFF</color>
+    <color name="color4">#8CACF7</color>
+    <color name="color5">#61C0D3</color>
 
     <!-- Charts Theme -->
     <color name="green_1">#84BD00</color>

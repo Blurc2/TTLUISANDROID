@@ -1,25 +1,31 @@
-package peach.princess.my.net.ttluis.ui.order
+package peach.princess.my.net.ttluis.ui.webview
 
-
+import android.content.Context
+import android.net.Uri
 import android.os.Bundle
 import android.app.Fragment
-import android.content.Context
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import gshp.net.johnson.ui.base.BaseFragment
-import kotlinx.android.synthetic.main.order_info.*
+import kotlinx.android.synthetic.main.fragment_webview.*
 
 import peach.princess.my.net.ttluis.R
 
+
 /**
  * A simple [Fragment] subclass.
+ * Activities that contain this fragment must implement the
+ * [webview.OnFragmentInteractionListener] interface
+ * to handle interaction events.
+ * Use the [webview.newInstance] factory method to
+ * create an instance of this fragment.
  *
  */
-class OrderFragment : BaseFragment() {
+class webview : BaseFragment() {
 
     override val layoutId: Int
-        get() = R.layout.order_info
+        get() = R.layout.fragment_webview
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -30,13 +36,7 @@ class OrderFragment : BaseFragment() {
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-
-        activity.setSupportActionBar(toolbar)
-        activity.supportActionBar?.setHomeAsUpIndicator(R.drawable.ic_close_vd_theme_24px)
-        activity.supportActionBar?.setDisplayHomeAsUpEnabled(true)
-
+        webview.loadUrl(activity.url)
+        webview.settings.javaScriptEnabled = true
     }
-
-
-
 }

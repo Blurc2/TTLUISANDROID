@@ -30,5 +30,11 @@ object Constants {
 
     object firebase{
         const val PATH_USER = "users/%s"
+        const val PATH_USERS = "users"
+    }
+
+    object Routes{
+        const val URL = "http:127.0.0.1/"
+        const val REGISTER = "ajax/registrar"
     }
 }

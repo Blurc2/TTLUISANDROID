@@ -8,7 +8,7 @@ data class User (
     var estado : Boolean = false,
     var idEmpleado : Int = -1,
     var nombre : String = "",
-    var numero : Long = -1,
+    var numero : String = "",
     var ordeneslist : ArrayList<Orden> = ArrayList(),
     var password : String = "",
     var subdepartamento : String = "",

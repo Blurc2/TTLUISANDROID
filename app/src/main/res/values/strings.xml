@@ -6,15 +6,31 @@
     <string name="dialog_close">CERRAR</string>
     <string name="dialog_accept">ACEPTAR</string>
     <string name="dialog_yes">SI</string>
+    <string name="dialog_no">NO</string>
 
     <string name="network_error">ERROR DE RED, VERIFIQUE SU CONEXIÓN O INTENTELO MÁS TARDE</string>
     <string name="label_error">ERROR DE RED</string>
     <string name="dialog_empty"></string>
-    <string name="label_login_result">Resultado Login</string>
+    <string name="close_session_header">CERRAR SESIÓN</string>
+    <string name="close_session_msg">¿ESTA SEGURO QUE DESEA CERRAR SESIÓN?</string>
+    <string name="label_login_result">RESPUESTA DEL SERVIDOR</string>
 
     <string name="label_user">USUARIO</string>
     <string name="label_password">CONTRASEÑA</string>
     <string name="label_button_enter">INICIAR SESIÓN</string>
+    <string name="order_info_header">DETALLES DE LA ORDEN : %s</string>
+    <string name="order_info_ubicacion">DETALLES DE UBICACIÓN</string>
+    <string name="order_info_users">SOLICITANTE / TÉCNICO</string>
+    <string name="order_info_general">DATOS GENERALES</string>
+    <string name="order_info_descs">OBSERVACIONES DE LA ORDEN</string>
+    <string name="order_info_edificio">EDIFICIO : %s</string>
+    <string name="order_info_piso">PISO : %s</string>
+    <string name="order_info_sala">SALA : %s</string>
+
+    <!-- Report States -->
+    <string name="report_state_1">RESUELTO</string>
+    <string name="report_state_2">ASIGNADO</string>
+    <string name="report_state_3">SIN ASIGNAR</string>
 
     <string name="cat_topappbar_lorem_ipsum" translatable="false">
         \t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris volutpat, dolor id

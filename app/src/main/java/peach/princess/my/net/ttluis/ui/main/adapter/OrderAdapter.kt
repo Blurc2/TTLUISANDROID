@@ -37,7 +37,7 @@ class OrderAdapter(val items : ArrayList<Orden>, val context: Context, val liste
         Log.i("OrderAdapter","Item -> ${Gson().toJson(items.get(position))}")
         holder.tvfolio.text = "No. Folio : ${items.get(position).nofolio}"
         holder.tvstart.text = "Fecha de inicio : ${items.get(position).start.split(",")[0]}"
-        holder.tvend.text = if(items.get(position).end != "") "Fecha de fin : ${items.get(position).end.split(",")[0]}" else "--"
+        holder.tvend.text = if(items.get(position).end != "") "Fecha de fin : ${items.get(position).end.split(",")[0]}" else "Fecha de fin : --"
         holder.tvubicacion.text = if(items.get(position).subdepto != null) "Ubicación : ${items.get(position).subdepto?.ubicacion}" else "Ubicación : ${items.get(position).depto.ubicacion}"
         holder.tvestado.text = when(items.get(position).estado){
             -1 -> "En proceso de ser asignada"

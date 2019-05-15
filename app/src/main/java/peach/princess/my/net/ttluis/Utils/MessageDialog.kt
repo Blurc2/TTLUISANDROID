@@ -74,7 +74,6 @@ class MessageDialog : BaseDialog() {
         super.onViewCreated(view, savedInstanceState)
 
         val titleId = arguments?.getInt(TITLE_ID)
-        var idPictureNewExh=""
         val message = arguments?.getString(DESCRIPTION_ID)
         val firstButton = arguments?.getString(FIRST_BUTTON)
         val secondButton = arguments?.getString(SECOND_BUTTON)
@@ -91,7 +90,7 @@ class MessageDialog : BaseDialog() {
             btn_optionTwo.visibility = View.VISIBLE
             btn_optionOne.visibility = View.GONE
             btn_optionTwo.setOnClickListener {
-                actionListener()
+                secondActionListener()
                 this.dismiss()
 
             }
@@ -99,11 +98,12 @@ class MessageDialog : BaseDialog() {
         } else {
             btn_optionOne.setOnClickListener {
                 this.dismiss()
-                secondActionListener()
+                actionListener()
             }
             btn_optionTwo.setOnClickListener {
                 this.dismiss()
-                actionListener()
+                secondActionListener()
+
             }
         }
     }
