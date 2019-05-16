@@ -80,6 +80,7 @@
     <color name="sendColor">#5BC497</color>
     <color name="tosendColor">#EFA71E</color>
     <color name="nosendColor">#C73339</color>
+    <color name="unknownColor">#ADADAD</color>
     <!-- Schedule state colors -->
     <color name="visiting">#3E9BCC</color>
     <color name="notvisited">#C6C6C6</color>

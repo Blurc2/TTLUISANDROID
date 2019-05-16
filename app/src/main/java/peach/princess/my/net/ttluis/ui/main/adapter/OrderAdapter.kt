@@ -43,12 +43,14 @@ class OrderAdapter(val items : ArrayList<Orden>, val context: Context, val liste
             -1 -> "En proceso de ser asignada"
             0 -> "Asignada, en proceso de ser resuelta"
             1 -> "Resuelta"
+            2 -> "No se pudo resolver"
             else -> "En proceso de ser asignada"
         }
         holder.tvfolio.background = when(items.get(position).estado){
-            -1 -> context.getDrawable(R.color.nosendColor)
+            -1 -> context.getDrawable(R.color.unknownColor)
             0 -> context.getDrawable(R.color.tosendColor)
             1 -> context.getDrawable(R.color.sendColor)
+            2 -> context.getDrawable(R.color.nosendColor)
             else -> context.getDrawable(R.color.nosendColor)
         }
     }

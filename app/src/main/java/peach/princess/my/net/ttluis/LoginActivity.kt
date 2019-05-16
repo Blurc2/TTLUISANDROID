@@ -1,6 +1,7 @@
 package peach.princess.my.net.ttluis
 
 import android.os.Bundle
+import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
@@ -62,6 +63,7 @@ class LoginActivity : BaseActivity(),LoginContract.View {
     }
 
     override fun setUrlF(string: String) {
+        Log.i("URLSITE",string)
         url = string
     }
 

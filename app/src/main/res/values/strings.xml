@@ -31,6 +31,7 @@
     <string name="report_state_1">RESUELTO</string>
     <string name="report_state_2">ASIGNADO</string>
     <string name="report_state_3">SIN ASIGNAR</string>
+    <string name="report_state_4">NO SE PUDO RESOLVER</string>
 
     <string name="cat_topappbar_lorem_ipsum" translatable="false">
         \t\tLorem ipsum dolor sit amet, consectetur adipiscing elit. Nam in scelerisque sem. Mauris volutpat, dolor id

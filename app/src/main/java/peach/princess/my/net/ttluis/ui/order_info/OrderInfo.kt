@@ -38,11 +38,11 @@ class OrderInfo  : BaseFragment() {
             {
                 -1-> {
                     tec.text = "Sin asignar"
-                    header.setBackgroundColor(ContextCompat.getColor(context!!, R.color.nosendColor))
+                    header.setBackgroundColor(ContextCompat.getColor(context!!, R.color.unknownColor))
                     val spannable1 = SpannableString( "Estado\nSin asignar")
                     spannable1.setSpan(RelativeSizeSpan(0.6F), 0, ("Estado\nSin asignar").indexOf("\n"), 0)
                     state.text =spannable1
-                    state.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_cancel, 0, 0, 0)
+                    state.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_power_settings, 0, 0, 0)
                     obsdoc.text = descripcioneslist[0]
                     obstec.text = "Sin Observaciones"
                 }
@@ -63,6 +63,16 @@ class OrderInfo  : BaseFragment() {
                     spannable1.setSpan(RelativeSizeSpan(0.6F), 0, ("Estado \nResuelta").indexOf("\n"), 0)
                     state.text = spannable1
                     state.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_maps_and_flags, 0, 0, 0)
+                    obsdoc.text = descripcioneslist[0]
+                    obstec.text = descripcioneslist[1]
+                }
+                2->{
+                    tec.text = tecnico
+                    header.setBackgroundColor(ContextCompat.getColor(context!!, R.color.nosendColor))
+                    val spannable1 = SpannableString( "Estado \nNo se pudo resolver")
+                    spannable1.setSpan(RelativeSizeSpan(0.6F), 0, ("Estado \nNo se pudo resolver").indexOf("\n"), 0)
+                    state.text = spannable1
+                    state.setCompoundDrawablesWithIntrinsicBounds( R.drawable.ic_cancel, 0, 0, 0)
                     obsdoc.text = descripcioneslist[0]
                     obstec.text = descripcioneslist[1]
                 }

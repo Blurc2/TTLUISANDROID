@@ -22,10 +22,11 @@
                 android:layout_height="fill_parent"
                 android:text="@string/report_state_1"
                 android:padding="8dp"
+                android:textSize="@dimen/text_10"
                 android:gravity="center"
                 android:background="@drawable/border_right_bottom"
                 android:drawableLeft="@drawable/grenn_square"
-                android:layout_weight="0.33"/>
+                android:layout_weight="0.25"/>
 
         <TextView
                 android:id="@+id/state2"
@@ -34,19 +35,33 @@
                 android:text="@string/report_state_2"
                 android:padding="8dp"
                 android:gravity="center"
+                android:textSize="@dimen/text_10"
                 android:background="@drawable/border_right_bottom"
                 android:drawableLeft="@drawable/yellow_square"
-                android:layout_weight="0.33"/>
+                android:layout_weight="0.25"/>
 
         <TextView
                 android:id="@+id/state3"
                 android:layout_width="0dp"
                 android:layout_height="fill_parent"
+                android:drawableLeft="@drawable/gray_square"
+                android:gravity="center"
+                android:padding="8dp"
+                android:textSize="@dimen/text_10"
+                android:background="@drawable/border_right_bottom"
+                android:text="@string/report_state_3"
+                android:layout_weight="0.25"
+        />
+        <TextView
+                android:id="@+id/state4"
+                android:layout_width="0dp"
+                android:layout_height="fill_parent"
                 android:drawableLeft="@drawable/red_square"
                 android:gravity="center"
                 android:padding="8dp"
-                android:text="@string/report_state_3"
-                android:layout_weight="0.33"
+                android:textSize="@dimen/text_10"
+                android:text="@string/report_state_4"
+                android:layout_weight="0.25"
         />
     </LinearLayout>
 
