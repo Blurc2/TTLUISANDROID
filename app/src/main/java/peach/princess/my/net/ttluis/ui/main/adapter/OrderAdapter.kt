@@ -17,7 +17,7 @@ import peach.princess.my.net.ttluis.domain.entity.Orden
 class OrderAdapter(val items : ArrayList<Orden>, val context: Context, val listener: (Orden)-> Unit) : RecyclerView.Adapter<OrderAdapter.ViewHolder>() {
 
 
-    fun setData(list : ArrayList<Orden>)
+    fun setData(list : List<Orden>)
     {
         items.clear()
         items.addAll(list)
@@ -42,7 +42,7 @@ class OrderAdapter(val items : ArrayList<Orden>, val context: Context, val liste
         holder.tvestado.text = when(items.get(position).estado){
             -1 -> "En proceso de ser asignada"
             0 -> "Asignada, en proceso de ser resuelta"
-            1 -> "Resuelta"
+            1 -> "Orden resuelta"
             2 -> "No se pudo resolver"
             else -> "En proceso de ser asignada"
         }

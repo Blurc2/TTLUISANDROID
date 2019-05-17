@@ -3,6 +3,7 @@ package peach.princess.my.net.ttluis
 import android.os.Bundle
 import android.util.Log
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
@@ -19,7 +20,7 @@ import peach.princess.my.net.ttluis.ui.login.LoginViewModel
 class LoginActivity : BaseActivity(),LoginContract.View {
     val scheduleProvider = AppScheduleProviderK()
     lateinit var navController: NavController
-    lateinit var orden : Orden
+    var orden = MutableLiveData<Orden?>()
     lateinit var url : String
 
     private val viewModel by lazy {
@@ -30,6 +31,7 @@ class LoginActivity : BaseActivity(),LoginContract.View {
         setTheme(R.style.AppTheme)
         super.onCreate(savedInstanceState)
         setContentView(R.layout.login_activity)
+        orden.value = null
         navController= Navigation.findNavController(this,R.id.nav_host_fragment)
         viewModel.getUrl()
     }

@@ -52,14 +52,14 @@ class webview : BaseFragment() {
             override fun onPageFinished(view: WebView?, url: String?) {
                 if(arguments?.getInt("action") == 1)
                     view?.loadUrl("javascript:showRegisterModal()")
-                hideLoading()
+//                hideLoading()
                 super.onPageFinished(view, url)
             }
 
-            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
-                showLoading()
-                return true
-            }
+//            override fun shouldOverrideUrlLoading(view: WebView?, url: String?): Boolean {
+//                showLoading()
+//                return true
+//            }
         }
 
         webview.loadUrl(activity.url)

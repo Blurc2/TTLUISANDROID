@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.core.os.bundleOf
+import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.google.firebase.auth.FirebaseAuth
@@ -20,6 +21,7 @@ import peach.princess.my.net.ttluis.domain.Interactor.MainInteractorImpl
 import peach.princess.my.net.ttluis.domain.entity.Orden
 import peach.princess.my.net.ttluis.domain.entity.User
 import peach.princess.my.net.ttluis.ui.main.adapter.OrderAdapter
+import java.lang.IllegalStateException
 
 class MainFragment : BaseFragment(),MainContract.View {
 
@@ -49,8 +51,9 @@ class MainFragment : BaseFragment(),MainContract.View {
         rvOrders.apply {
             initRow(spacingItem = 10)
             adapter = OrderAdapter(ArrayList(),context){
-                activity.orden = it
                 activity.navController.navigate(R.id.action_mainFragment_to_orderInfo)
+                activity.orden.value = it
+
 //                findNavController(this@MainFragment).navigate(R.id.action_mainFragment_to_orderFragment)
             }
         }
@@ -86,12 +89,24 @@ class MainFragment : BaseFragment(),MainContract.View {
                 }
             }
         }
+        viewModel.orders.observe(this, Observer { ordenes ->
+            Log.i("ORDENES",Gson().toJson(ordenes))
+            (rvOrders.adapter as OrderAdapter).setData(ordenes)
+        })
+
         viewModel.getOrderByUid(arguments!!.getString("uid"))
+
+
     }
 
-    override fun loadData(user: User) {
-        Log.i("MAINFRAGMENT", Gson().toJson(user.ordeneslist))
-        (rvOrders.adapter as OrderAdapter).setData(user.ordeneslist)
+    override fun loadData(ordenes: List<Orden>) {
+        activity.orden.value?.let {orden ->
+            val neworden = ordenes.find { it.nofolio == orden.nofolio}
+            neworden?.let {
+                Log.e("NewOrden",Gson().toJson(it))
+                activity.orden.value = it
+            }
+        }
     }
 
     override fun showLoading() = ProgressDialog.show(activity)

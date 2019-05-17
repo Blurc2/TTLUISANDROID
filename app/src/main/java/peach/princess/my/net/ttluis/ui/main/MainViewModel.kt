@@ -1,6 +1,7 @@
 package peach.princess.my.net.ttluis.ui.main
 
 import android.util.Log
+import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
@@ -14,6 +15,9 @@ import peach.princess.my.net.ttluis.domain.entity.User
 
 class MainViewModel(provider: ScheduleProvider, interactor: MainInteractor, view: MainContract.View) :
     BaseViewModel<MainInteractor, MainContract.View>(provider,view,interactor), MainContract.ViewModel {
+
+    var orders = MutableLiveData<List<Orden>>()
+
     override fun onDestroy() {
         onClean()
     }
@@ -47,7 +51,9 @@ class MainViewModel(provider: ScheduleProvider, interactor: MainInteractor, view
 
                             user?.let {
                                 it.ordeneslist.addAll(listorder)
-                                navigator?.loadData( it)
+                                orders.value = it.ordeneslist
+
+                                navigator?.loadData( it.ordeneslist)
                             }
 
                         }
