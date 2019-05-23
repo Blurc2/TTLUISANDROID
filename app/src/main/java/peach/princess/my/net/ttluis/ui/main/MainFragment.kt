@@ -156,15 +156,17 @@ class MainFragment : BaseFragment(),MainContract.View {
         bigTextStyle.setBigContentTitle("Orden $id actualizada")
         bigTextStyle.bigText("El estado de su orden con No. Folio $id cambio a $msg")
 
+        context?.let {
+            val notificationBuilder = NotificationCompat.Builder(context!!, channelId )
+            val notification = notificationBuilder
+                .setSmallIcon(R.drawable.escudoescom)
+                .setStyle(bigTextStyle)
+                .setCategory(Notification.CATEGORY_EVENT)
+                .build()
+            val notificationManager = activity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+            notificationManager.notify("tag", 101, notification)
+        }
 
-        val notificationBuilder = NotificationCompat.Builder(context!!, channelId )
-        val notification = notificationBuilder
-            .setSmallIcon(R.drawable.escudoescom)
-            .setStyle(bigTextStyle)
-            .setCategory(Notification.CATEGORY_EVENT)
-            .build()
-        val notificationManager = activity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-        notificationManager.notify("tag", 101, notification)
     }
 
 
