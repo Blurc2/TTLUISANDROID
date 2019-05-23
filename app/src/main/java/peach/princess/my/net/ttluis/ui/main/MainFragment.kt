@@ -1,10 +1,19 @@
 package peach.princess.my.net.ttluis.ui.main
 
+import android.app.Notification
+import android.app.NotificationManager
+import android.content.Context
+import android.graphics.Color
 import android.os.Bundle
+import android.text.SpannableString
+import android.text.style.ForegroundColorSpan
+import android.text.style.RelativeSizeSpan
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import androidx.core.app.NotificationCompat
+import androidx.core.app.NotificationManagerCompat
 import androidx.core.os.bundleOf
 import androidx.lifecycle.Observer
 import androidx.navigation.fragment.NavHostFragment.findNavController
@@ -22,6 +31,11 @@ import peach.princess.my.net.ttluis.domain.entity.Orden
 import peach.princess.my.net.ttluis.domain.entity.User
 import peach.princess.my.net.ttluis.ui.main.adapter.OrderAdapter
 import java.lang.IllegalStateException
+import android.app.NotificationChannel
+import android.os.Build.VERSION_CODES.O
+import android.os.Build
+import androidx.annotation.RequiresApi
+
 
 class MainFragment : BaseFragment(),MainContract.View {
 
@@ -99,15 +113,72 @@ class MainFragment : BaseFragment(),MainContract.View {
 
     }
 
-    override fun loadData(ordenes: List<Orden>) {
+    override fun loadData(user: User) {
+        activity.username = "${user.nombre} ${user.ap} ${user.am}"
+        activity.usertype = user.tipo
+        val spannable1 = SpannableString(activity.username)
+        val spannable2 = SpannableString(activity.usertype)
+        spannable1.setSpan(RelativeSizeSpan(0.7F), 0, activity.username.length, 0)
+        spannable2.setSpan(RelativeSizeSpan(0.7F), 0, activity.usertype.length, 0)
+        spannable1.setSpan(ForegroundColorSpan(Color.WHITE), 0, activity.username.length, 0)
+        spannable2.setSpan(ForegroundColorSpan(Color.WHITE), 0, activity.usertype.length, 0)
+        activity.supportActionBar?.title = spannable1
+        activity.supportActionBar?.subtitle = spannable2
+
         activity.orden.value?.let {orden ->
-            val neworden = ordenes.find { it.nofolio == orden.nofolio}
+            val neworden = user.ordeneslist.find { it.nofolio == orden.nofolio}
             neworden?.let {
                 Log.e("NewOrden",Gson().toJson(it))
                 activity.orden.value = it
             }
         }
     }
+
+    override fun shownotification(state: Int,id: Int) {
+        Log.e("shownotification","shownotification $id -> $state")
+        val channelId =
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
+                createNotificationChannel("my_service", "My Background Service")
+            } else {
+                // If earlier version channel ID is not used
+                // https://developer.android.com/reference/android/support/v4/app/NotificationCompat.Builder.html#NotificationCompat.Builder(android.content.Context)
+                ""
+            }
+
+        val msg = when(state){
+            0 -> "Asignada, en espera de ser resuelta"
+            1 -> "Resuelta"
+            2 -> "No se pudo resolver"
+            else -> "Sin asignar"
+        }
+
+        val bigTextStyle = NotificationCompat.BigTextStyle()
+        bigTextStyle.setBigContentTitle("Orden $id actualizada")
+        bigTextStyle.bigText("El estado de su orden con No. Folio $id cambio a $msg")
+
+
+        val notificationBuilder = NotificationCompat.Builder(context!!, channelId )
+        val notification = notificationBuilder
+            .setSmallIcon(R.drawable.escudoescom)
+            .setStyle(bigTextStyle)
+            .setCategory(Notification.CATEGORY_EVENT)
+            .build()
+        val notificationManager = activity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        notificationManager.notify("tag", 101, notification)
+    }
+
+
+    @RequiresApi(Build.VERSION_CODES.O)
+    private fun createNotificationChannel(channelId: String, channelName: String): String{
+        val chan = NotificationChannel(channelId,
+            channelName, NotificationManager.IMPORTANCE_HIGH)
+        chan.lightColor = R.color.colorPrimary
+        chan.lockscreenVisibility = Notification.VISIBILITY_PRIVATE
+        val service = activity.getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
+        service.createNotificationChannel(chan)
+        return channelId
+    }
+
 
     override fun showLoading() = ProgressDialog.show(activity)
 

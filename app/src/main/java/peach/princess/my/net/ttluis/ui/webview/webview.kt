@@ -65,6 +65,16 @@ class webview : BaseFragment() {
         webview.loadUrl(activity.url)
     }
 
+    override fun onResume() {
+        super.onResume()
+        activity.supportActionBar?.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activity.supportActionBar?.show()
+    }
+
     fun showLoading() = ProgressDialog.show(activity)
 
     fun hideLoading() = ProgressDialog.dismiss()

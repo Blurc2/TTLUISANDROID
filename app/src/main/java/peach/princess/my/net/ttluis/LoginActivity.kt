@@ -7,7 +7,9 @@ import androidx.lifecycle.MutableLiveData
 import androidx.navigation.NavController
 import androidx.navigation.Navigation
 import androidx.navigation.fragment.NavHostFragment
+import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.iid.FirebaseInstanceId
 import peach.princess.my.net.ttluis.Utils.Constants
 import peach.princess.my.net.ttluis.data.executor.AppScheduleProviderK
 import peach.princess.my.net.ttluis.domain.Interactor.LoginInteractorImpl
@@ -21,6 +23,8 @@ class LoginActivity : BaseActivity(),LoginContract.View {
     val scheduleProvider = AppScheduleProviderK()
     lateinit var navController: NavController
     var orden = MutableLiveData<Orden?>()
+    var username = ""
+    var usertype = ""
     lateinit var url : String
 
     private val viewModel by lazy {
@@ -34,6 +38,20 @@ class LoginActivity : BaseActivity(),LoginContract.View {
         orden.value = null
         navController= Navigation.findNavController(this,R.id.nav_host_fragment)
         viewModel.getUrl()
+
+        FirebaseInstanceId.getInstance().instanceId
+            .addOnCompleteListener(OnCompleteListener { task ->
+                if (!task.isSuccessful) {
+                    Log.w("FirebaseInstanceId", "getInstanceId failed", task.exception)
+                    return@OnCompleteListener
+                }
+
+                // Get new Instance ID token
+                val token = task.result?.token
+
+                // Log and toast
+                Log.d("FirebaseInstanceId", token)
+            })
     }
 
     override fun onBackPressed() {

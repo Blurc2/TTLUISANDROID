@@ -49,11 +49,22 @@ class MainViewModel(provider: ScheduleProvider, interactor: MainInteractor, view
                                 listorder.add(orden)
                             }
 
+
                             user?.let {
                                 it.ordeneslist.addAll(listorder)
+                                if(!orders.value.isNullOrEmpty())
+                                {
+                                    Log.e("shownotification","No esta vacio")
+                                    it.ordeneslist.forEach {order ->
+                                        orders.value!!.find { it.nofolio == order.nofolio}?.let {
+                                            if(it.estado != order.estado)
+                                                navigator?.shownotification(order.estado,order.nofolio)
+                                        }
+                                    }
+                                }
                                 orders.value = it.ordeneslist
 
-                                navigator?.loadData( it.ordeneslist)
+                                navigator?.loadData( it)
                             }
 
                         }

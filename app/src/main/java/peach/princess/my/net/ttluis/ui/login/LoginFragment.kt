@@ -19,6 +19,9 @@ import peach.princess.my.net.ttluis.Utils.Validation
 import peach.princess.my.net.ttluis.data.executor.AppScheduleProviderK
 import peach.princess.my.net.ttluis.domain.Interactor.LoginInteractorImpl
 import peach.princess.my.net.ttluis.ui.main.MainFragment
+import androidx.appcompat.app.AppCompatActivity
+
+
 
 class LoginFragment : BaseFragment(),LoginContract.View {
 
@@ -53,6 +56,16 @@ class LoginFragment : BaseFragment(),LoginContract.View {
         registrar.setOnClickListener {
             findNavController(this).navigate(R.id.action_loginFragment_to_webview2, bundleOf("action" to 1))
         }
+    }
+
+    override fun onResume() {
+        super.onResume()
+        activity.supportActionBar?.hide()
+    }
+
+    override fun onStop() {
+        super.onStop()
+        activity.supportActionBar?.show()
     }
 
     override fun onStart() {

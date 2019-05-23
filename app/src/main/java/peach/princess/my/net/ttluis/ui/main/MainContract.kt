@@ -5,7 +5,8 @@ import peach.princess.my.net.ttluis.domain.entity.User
 
 interface MainContract {
     interface View {
-        fun loadData(ordenes : List<Orden>)
+        fun loadData(user : User)
+        fun shownotification(state : Int,id: Int)
         fun showLoading()
         fun hideLoading()
     }
